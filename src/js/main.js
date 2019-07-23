@@ -1,22 +1,13 @@
 "use strict";
+fetch("https://api.github.com/users/kamilachoroszucha/repos")
+  .then(resp => resp.json())
+  .then(resp => {
+    
+    for(const repo of resp){
+    console.log(`${repo.name}: ${repo.html_url}`)}
+  })
+  .catch(err=>
+    console.log(err))
 
-// service worker registration - remove if you're not going to use it
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('serviceworker.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  });
-}
-
-// place your code below
-
-
-console.log(`Hello world!`);
 
 
